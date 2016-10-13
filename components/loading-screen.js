@@ -35,7 +35,7 @@ export default class LoadingScreen extends Component {
 
     var profileRequest = new GraphRequest(
                 '/me',
-                { parameters: { fields: { string: 'email,name,first_name,last_name,picture,cover' } } },
+                { parameters: { fields: { string: 'email,name,first_name,last_name,picture,cover,friends' } } },
                 responseCallback,
     );
     new GraphRequestManager().addRequest(profileRequest).start();
