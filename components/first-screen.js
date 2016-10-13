@@ -17,6 +17,7 @@ var Login = React.createClass({
       <View>
         <LoginButton
           publishPermissions={["publish_actions"]}
+          permissions={["user_friends"]}
           onLoginFinished={
             (error, result) => {
               if (error) {
