@@ -20,30 +20,52 @@ export default class LoadingScreen extends Component {
       animating: true,
     };
 
-    var responseCallback = ((error, result) => {
-      if (error) {
-        this.props.navigator.push({
-          id: 'first'
-        })
-      } else {
-        this.props.onLogin(result);
+    this.fetchMember();
+  }
 
-        if (this.props.store) {
-          this.storeMember(result);
-        }
-
-        this.props.navigator.push({
-          id: 'second'
-        })
-      }
-    })
-
+  fetchMember() {
     var profileRequest = new GraphRequest(
-                '/me',
-                { parameters: { fields: { string: 'email,name,first_name,last_name,picture,cover,friends' } } },
-                responseCallback,
+      '/me',
+      { parameters: { fields: { string: 'email,name,first_name,last_name,picture,cover' } } },
+      ((error, member) => {
+        if (error) {
+          this.onFailure(error);
+        } else {
+          this.storeMember(member);
+          this.fetchFriends(member);
+        }
+      }),
     );
     new GraphRequestManager().addRequest(profileRequest).start();
+  }
+
+  fetchFriends(member) {
+    var friendsRequest = new GraphRequest(
+      '/' + member.id + '/friends',
+      { parameters: { fields: { string: 'id,name,picture,cover' } } },
+      ((error, friends) => {
+        if (error) {
+          this.onFailure(error);
+        } else {
+          this.onAllCompleted(member, friends);
+        }  
+      }),
+    );
+    new GraphRequestManager().addRequest(friendsRequest).start();
+  }
+
+  onFailure(error) {
+    this.props.navigator.push({
+      id: 'first'
+    });
+  }
+
+  onAllCompleted(member, friends) {
+    member.friends = friends.data;
+    this.props.onLogin(member);
+    this.props.navigator.push({
+      id: 'second'
+    });
   }
 
   storeMember(member) {
