@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
 
 const FBSDK = require('react-native-fbsdk');
@@ -40,10 +41,11 @@ var Login = React.createClass({
 export default class FirstScreen extends Component {
   render() {
     return (
-        <View style={this.props.styles.container}>
+        <Image source={require('../assets/drawable-xxhdpi/image.png')} style={{flex: 1, alignItems: 'center', width: 360, height: 640}}>
+          <Image source={require('../assets/drawable-xxhdpi/logo.png')} style={{alignItems: 'center', width: 241, height: 225}} />
           <Text>Wing.me Here will be the logo</Text>
           <Login navigator={this.props.navigator}/>
-        </View>
+        </Image>
     );
   }
 }
