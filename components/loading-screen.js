@@ -26,6 +26,7 @@ export default class LoadingScreen extends Component {
           id: 'first'
         })
       } else {
+        this.props.onLogin({name: "toto"});
         this.props.navigator.push({
           id: 'second'
         })

@@ -17,11 +17,7 @@ export default class SecondScreen extends Component {
   render() {
     return (
         <View style={this.props.styles.container}>
-          <ActivityIndicator
-            animating={this.state.animating}
-            size="large"
-          />
-          <Text>Second screen</Text>
+          <Text>Second screen : {this.props.member.name}</Text>
           <Text>{this.state.content}</Text>
         </View>
     );
