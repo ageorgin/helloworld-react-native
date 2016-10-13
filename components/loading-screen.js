@@ -27,6 +27,11 @@ export default class LoadingScreen extends Component {
         })
       } else {
         this.props.onLogin(result);
+
+        if (this.props.store) {
+          this.storeMember(result);
+        }
+
         this.props.navigator.push({
           id: 'second'
         })
@@ -39,6 +44,21 @@ export default class LoadingScreen extends Component {
                 responseCallback,
     );
     new GraphRequestManager().addRequest(profileRequest).start();
+  }
+
+  storeMember(member) {
+    fetch('https://enigmatic-eyrie-31910.herokuapp.com/store/' + member.id, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nickname: member.name,
+        avatar_url: member.picture.data.url,
+        background_url: member.cover.source
+      })
+    })
   }
 
   render() {

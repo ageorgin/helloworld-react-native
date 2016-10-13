@@ -25,7 +25,8 @@ var Login = React.createClass({
                 alert("Login was cancelled");
               } else {
                 this.props.navigator.push({
-                  id: 'loading'
+                  id: 'loading',
+                  store: true
                 })
               }
             }

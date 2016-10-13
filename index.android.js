@@ -37,7 +37,7 @@ export default class WingMe extends Component {
         renderScene={(route, navigator) => {
           switch (route.id) {
             case 'loading':
-              return <LoadingScreen styles={styles} title={route.title} navigator={navigator} onLogin={this.onLogin.bind(this)}/>
+              return <LoadingScreen styles={styles} title={route.title} navigator={navigator} store={route.store} onLogin={this.onLogin.bind(this)}/>
             case 'first':
               return <FirstScreen styles={styles} title={route.title} navigator={navigator}/>
             case 'second':
