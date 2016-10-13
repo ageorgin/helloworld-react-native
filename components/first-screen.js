@@ -42,10 +42,10 @@ export default class FirstScreen extends Component {
   render() {
     return (
         <Image source={require('../assets/drawable-xxhdpi/image.png')} style={{flex: 1, alignItems: 'center', width: 360, height: 640}}>
-          <Image source={require('../assets/drawable-xxhdpi/logo.png')} style={{alignItems: 'center', width: 180, height: 178, marginTop: 100, marginBottom: 100}} />
-          <Text>Trust your friends</Text>
-          <Text>to help you find the perfect mate.</Text>
-          <Login navigator={this.props.navigator}/>
+          <Image source={require('../assets/drawable-xxhdpi/logo.png')} style={{alignItems: 'center', width: 180, height: 178, marginTop: 80, marginBottom: 100}} />
+          <Text style={{color: "white", fontSize: 20}}>Trust your friends</Text>
+          <Text style={{marginBottom: 70, color: "white", fontSize: 20}}>to help you find the perfect mate.</Text>
+          <Login navigator={this.props.navigator} />
         </Image>
     );
   }
