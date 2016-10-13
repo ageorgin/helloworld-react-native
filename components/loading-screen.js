@@ -26,7 +26,7 @@ export default class LoadingScreen extends Component {
           id: 'first'
         })
       } else {
-        this.props.onLogin({name: "toto"});
+        this.props.onLogin(result);
         this.props.navigator.push({
           id: 'second'
         })
@@ -35,7 +35,7 @@ export default class LoadingScreen extends Component {
 
     var profileRequest = new GraphRequest(
                 '/me',
-                { parameters: { fields: { string: 'email,name,first_name,last_name' } } },
+                { parameters: { fields: { string: 'email,name,first_name,last_name,picture,cover' } } },
                 responseCallback,
     );
     new GraphRequestManager().addRequest(profileRequest).start();
