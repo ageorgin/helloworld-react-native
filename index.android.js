@@ -9,24 +9,32 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
+import FirstScreen from './components/first-screen.js';
+import SecondScreen from './components/second-screen.js';
+
 export default class WingMe extends Component {
+  /*render() {
+    return (
+      <FirstScreen styles={styles}/>
+    );
+  }*/
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={{ title: 'My Initial Scene', index: 0, id: 'first' }}
+        renderScene={(route, navigator) => {
+          switch (route.id) {
+            case 'first':
+              return <FirstScreen styles={styles} title={route.title} navigator={navigator}/>
+            case 'second':
+              return <SecondScreen styles={styles} title={route.title} navigator={navigator}/>
+          }
+        }}
+      />
     );
   }
 }
