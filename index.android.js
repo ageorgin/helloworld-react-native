@@ -13,16 +13,20 @@ import {
   Navigator
 } from 'react-native';
 
+import LoadingScreen from './components/loading-screen.js';
 import FirstScreen from './components/first-screen.js';
 import SecondScreen from './components/second-screen.js';
 
 export default class WingMe extends Component {
+
   render() {
     return (
       <Navigator
-        initialRoute={{ title: 'My Initial Scene', index: 0, id: 'first' }}
+        initialRoute={{ title: 'My Initial Scene', index: 0, id: 'loading' }}
         renderScene={(route, navigator) => {
           switch (route.id) {
+            case 'loading':
+              return <LoadingScreen styles={styles} title={route.title} navigator={navigator}/>
             case 'first':
               return <FirstScreen styles={styles} title={route.title} navigator={navigator}/>
             case 'second':
