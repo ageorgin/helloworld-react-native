@@ -17,10 +17,18 @@ export default class SecondScreen extends Component {
     };
   }
 
+  selectFriend(friend) {
+  	this.props.navigator.push({
+      id: 'match',
+      friend: friend
+    });
+  }
+
   renderFriend(friend) {
   	return	(<View style={{flex: 1, flexDirection: 'row', width: 360, height: 120, backgroundColor: '#AAFFFF'}}>
         		<Image source={{uri: friend.picture.data.url}} style={{width: 100, height: 100}} />
         		<Text>{friend.name}</Text>
+        		<Text onPress={() => this.selectFriend(friend)}>Wing</Text>
         	</View>);
   }
 
