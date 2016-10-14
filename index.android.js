@@ -14,8 +14,8 @@ import {
 } from 'react-native';
 
 import LoadingScreen from './components/loading-screen.js';
-import FirstScreen from './components/first-screen.js';
-import SecondScreen from './components/second-screen.js';
+import LoginScreen from './components/login-screen.js';
+import HomeScreen from './components/home-screen.js';
 import MatchScreen from './components/match-screen.js';
 
 export default class WingMe extends Component {
@@ -31,10 +31,6 @@ export default class WingMe extends Component {
     this.setState({ member: member });
   }
 
-  // onFriendSelect(friend, callback) {
-  //   this.setState({ friend: friend }, callback());
-  // }
-
   render() {
     return (
       <Navigator
@@ -43,10 +39,10 @@ export default class WingMe extends Component {
           switch (route.id) {
             case 'loading':
               return <LoadingScreen styles={styles} title={route.title} navigator={navigator} store={route.store} onLogin={this.onLogin.bind(this)}/>
-            case 'first':
-              return <FirstScreen styles={styles} title={route.title} navigator={navigator}/>
-            case 'second':
-              return <SecondScreen styles={styles} title={route.title} navigator={navigator} member={this.state.member}/>
+            case 'login':
+              return <LoginScreen styles={styles} title={route.title} navigator={navigator}/>
+            case 'home':
+              return <HomeScreen styles={styles} title={route.title} navigator={navigator} member={this.state.member}/>
             case 'match':
               return <MatchScreen styles={styles} title={route.title} navigator={navigator} member={this.state.member} friend={route.friend}/>  
           }

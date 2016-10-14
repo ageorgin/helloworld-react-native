@@ -38,7 +38,7 @@ var Login = React.createClass({
   }
 });
 
-export default class FirstScreen extends Component {
+export default class LoginScreen extends Component {
   render() {
     return (
         <Image source={require('../assets/drawable-xxhdpi/image.png')} style={{flex: 1, alignItems: 'center', width: 360, height: 640, backgroundColor: "black"}}>

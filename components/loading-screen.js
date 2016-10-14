@@ -56,7 +56,7 @@ export default class LoadingScreen extends Component {
 
   onFailure(error) {
     this.props.navigator.push({
-      id: 'first'
+      id: 'login'
     });
   }
 
@@ -64,7 +64,7 @@ export default class LoadingScreen extends Component {
     member.friends = friends.data;
     this.props.onLogin(member);
     this.props.navigator.push({
-      id: 'second'
+      id: 'home'
     });
   }
 
