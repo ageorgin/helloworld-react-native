@@ -16,6 +16,7 @@ import {
 import LoadingScreen from './components/loading-screen.js';
 import FirstScreen from './components/first-screen.js';
 import SecondScreen from './components/second-screen.js';
+import MatchScreen from './components/match-screen.js';
 
 export default class WingMe extends Component {
 
@@ -26,9 +27,13 @@ export default class WingMe extends Component {
     };
   }
 
-  onLogin(res) {
-    this.setState({ member: res });
+  onLogin(member) {
+    this.setState({ member: member });
   }
+
+  // onFriendSelect(friend, callback) {
+  //   this.setState({ friend: friend }, callback());
+  // }
 
   render() {
     return (
@@ -42,6 +47,8 @@ export default class WingMe extends Component {
               return <FirstScreen styles={styles} title={route.title} navigator={navigator}/>
             case 'second':
               return <SecondScreen styles={styles} title={route.title} navigator={navigator} member={this.state.member}/>
+            case 'match':
+              return <MatchScreen styles={styles} title={route.title} navigator={navigator} member={this.state.member} friend={route.friend}/>  
           }
         }}
       />
