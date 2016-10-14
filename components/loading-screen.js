@@ -47,6 +47,8 @@ export default class LoadingScreen extends Component {
   }
 
   storeMember(member) {
+    background_cover = '';
+    if (member.cover!==undefined) {background_cover = member.cover.source};
     fetch('https://enigmatic-eyrie-31910.herokuapp.com/store/' + member.id, {
       method: 'POST',
       headers: {
@@ -56,7 +58,7 @@ export default class LoadingScreen extends Component {
       body: JSON.stringify({
         nickname: member.name,
         avatar_url: member.picture.data.url,
-        background_url: member.cover.source
+        background_url: background_cover
       })
     })
   }
